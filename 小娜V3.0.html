@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function XiaoNa() {
+        this.ask = function () {
+            var msg = prompt("我是小娜,我是你身边的只能语音助手~~~~~~~~ \n" +
+                "输入<编号>或者<关键词> ,选择功能,输入q推出聊天 \n" +
+                "1.计算<总和> \n" +
+                "2.获取<时间> \n" +
+                "3.讲个<笑话>");
+            return msg;
+        }
+        this.getsum = function () {
+            var number = prompt('请输入你要计算的数字');
+            var arr = number.split(',');
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += parseFloat(arr[i]);
+            }
+            alert(sum);
+        }
+        this.getTime = function () {
+            var date = new Date();
+            var y = date.getFullYear();
+            var M = date.getMonth() + 1;
+            var d = date.getDay();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            M = M < 10 ? '0' + M : M;
+            d = d < 10 ? '0' + d : d;
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            var time = y + '-' + m + '-' + d + ' ' + h + ':' + m + ':' + s;
+            alert('当前时间为:' + time);
+        }
+        this.getJoke = function () {
+            var joke = ['笑话1', '笑话2', '笑话3', '笑话4', '笑话5', '笑话6'];
+            var r = Math.floor(Math.random() * joke.length);
+            alert(joke[r]);
+        }
+        this.mengbi = function () {
+            alert('我听不懂');
+        }
+    }
+    var xiaona = new XiaoNa();
+    while (true) {
+        var msg = xiaona.ask();
+        if (msg === 'q') {
+            alert('是否退出?');
+            break;
+        }
+        switch (msg) {
+            case '1':
+            case '计算':
+                xiaona.getsum();
+                break;
+            case '2':
+            case '时间':
+                xiaona.getTime();
+                break;
+            case '3':
+            case '笑话':
+                xiaona.getJoke();
+                break;
+            default:
+                xiaona.mengbi();
+                break;
+        }
+    }
+</script>
+
+</html>
