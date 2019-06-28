@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function patchZero(number) {
+        if (number < 10) {
+            number = '0' + number;
+        }
+        return number;
+    }
+    function formatData() {
+        var data = new Date();
+        var y = data.getFullYear();
+        var M = data.getMonth() + 1;
+        var d = data.getDate();
+        var h = data.getHours();
+        var m = data.getMinutes();
+        var s = data.getSeconds();
+
+        M = patchZero(M);
+        d = patchZero(d);
+        h = patchZero(h);
+        m = patchZero(m);
+        s = patchZero(s);
+
+        var time = y + "-" + M + "-" + d + "-" + h + ":" + m + ":" + s;
+        return time;
+    }
+    function getSumArray(arr) {
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum += parseFloat(arr[i]);
+        }
+        return sum;
+    }
+    function inputOne() {
+        var numbers = prompt('请输入你想要相加的数字,例如:1,2,3,4');
+        var arr = numbers.split(',');
+        var sum = getSumArray(arr);
+        return sum;
+    }
+
+    function getJokes(r) {
+        var joke = ['笑话1', '笑话2', '笑话3', '笑话4', '笑话5', '笑话6'];
+        var r = Math.floor(Math.random() * joke.length);
+        return joke[r];
+    }
+
+    while (true) {
+        var n = prompt("我是小娜,我是你身边的只能语音助手~~~~~~~~ \n" +
+            "输入<编号>或者<关键词> ,选择功能,输入q推出聊天 \n" +
+            "1.计算<总和> \n" +
+            "2.获取<时间> \n" +
+            "3.讲个<笑话>");
+        if (n === 'q') {
+            alert('你已经不爱小娜了吗?再考虑一下吧')
+            break;
+        }
+        switch (n) {
+            case '1':
+            case '计算':
+                var sum = inputOne();
+                alert('你计算的结果是:' + sum);
+                break;
+            case '2':
+            case '时间':
+                var time = formatData();
+                alert("当前的时间是:" + time);
+                break;
+            case '3':
+            case '笑话':
+                var r = getJokes();
+                alert(r);
+                break;
+            default:
+                alert('我听不懂');
+                break;
+        }
+    } 
+</script>
+
+</html>
